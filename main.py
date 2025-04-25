@@ -67,3 +67,21 @@ def run_tests(tamanhos):
         })
 
     return pd.DataFrame(resultados)
+
+tamanhoMatriz = [32, 64, 128, 256, 512]
+df_results = run_tests(tamanhoMatriz)
+df_results.to_csv('resultados_multiplicacao.csv', index=False)
+
+
+plt.figure(figsize=(10, 6))
+plt.plot(df_results['Tamanho'], df_results['Tempo_Padrão'], label='Multiplicação Padrão (n³)', marker='o')
+plt.plot(df_results['Tamanho'], df_results['Tempo_Strassen'], label='Strassen', marker='o')
+plt.xlabel('Tamanho da Matriz (n x n)')
+plt.ylabel('Tempo (s)')
+plt.title('Comparação de Tempo: Padrão vs Strassen')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+df_results
