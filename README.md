@@ -29,7 +29,7 @@ Os testes foram realizados com os seguintes tamanhos de matrizes: 32, 64, 128, 2
 
 ## 📈 Gráfico com comparação
 
-![Gráfico de comparação](img\Figure_2.png)
+![Gráfico de comparação](img/Figure_2.png)
 
 O gráfico revela que para as matrizes de tamanho até 512 x 512, o algoritmo de Strassen pode ser menos eficiente. Esse aumento em tempo de execução se deve ao fato do algoritmo ser recursivo e introduzir uma sobrecarga exaustiva de chamadas de função. Além disso, como a implementação não utiliza otimizações comuns como troca para multiplicação padrão em submatrizes pequenas, o custo adicional supera os ganhos teóricos para tamanhos menores de matriz.
 
