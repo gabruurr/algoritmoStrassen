@@ -3,7 +3,8 @@ import time
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def mutiplicacaoPadrao(A, B):
+
+def multiplicacarPadrao(A, B):
     n = len(A)
     C = np.zeros((n, n))
     for i in range(n):
@@ -43,3 +44,26 @@ def strassen(A, B):
         cima = np.hstack((C11, C12))
         baixo = np.hstack((C21, C22))
         return np.vstack((cima, baixo))
+
+
+def run_tests(tamanhos):
+    resultados = []
+    for n in tamanhos:
+        A = np.random.randint(0, 10, size=(n, n))
+        B = np.random.randint(0, 10, size=(n, n))
+
+        start = time.time()
+        multiplicacarPadrao(A, B)
+        standard_time = time.time() - start
+
+        start = time.time()
+        strassen(A, B)
+        strassen_time = time.time() - start
+
+        resultados.append({
+            'Tamanho': n,
+            'Tempo_Padrão': standard_time,
+            'Tempo_Strassen': strassen_time
+        })
+
+    return pd.DataFrame(resultados)
